@@ -1,0 +1,53 @@
+[build-system]
+# build the package with [flit](https://flit.readthedocs.io)
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+# See https://www.python.org/dev/peps/pep-0621/
+name = "test_eb_entrypoints"
+dynamic = ["version"] # read from ocr_translate_hugging_face/__init__.py
+description = "Plugins to enable usage of HuggingFace Models in ocr_translate"
+authors = []
+# readme = "README.md"
+# license = { file = "LICENSE.txt" }
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+]
+keywords = ["django", "translation"]
+requires-python = ">=3.10"
+dependencies = [
+    "easybuild_framework"
+]
+
+[project.urls]
+Source = "https://www.google.com"
+
+[project.optional-dependencies]
+
+[project.entry-points."easybuild.hooks"]
+"thisisanhook.1" = "test_eb_entrypoints:hello_world"
+"pre.configure.test_hook" = "test_eb_entrypoints:test_pre_configure"
+"thisisanhook.2" = "test_eb_entrypoints:test_post_configure"
+
+[project.entry-points."easybuild.toolchain"]
+# "tc1" = "test_eb_entrypoints.unified:LLVM"
+"tc2" = "test_eb_entrypoints.unified:LLVMtc"
+"tc3" = "test_eb_entrypoints.unified:Lfbf"
+"tc4" = "test_eb_entrypoints.unified:Lompi"
+"tc5" = "test_eb_entrypoints.unified:Lolf"
+"tc6" = "test_eb_entrypoints.unified:LFoss"
+
+[project.entry-points."easybuild.easyblock"]
+"eb1" = "test_eb_entrypoints.easyblock:TestEasyBlock"
+
+
+[tool.flit.module]
+name = "test_eb_entrypoints"
+
+[tool.flit.sdist]
+exclude = [
+    ".gitignore", ".github", ".pre-commit-config.yaml",
+    "tests/", "tests/*",
+    ]
