@@ -4,10 +4,9 @@ requires = ["flit_core >=3.4,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-# See https://www.python.org/dev/peps/pep-0621/
 name = "test_eb_entrypoints"
-dynamic = ["version"] # read from ocr_translate_hugging_face/__init__.py
-description = "Plugins to enable usage of HuggingFace Models in ocr_translate"
+dynamic = ["version"]
+description = "Demo of EasyBuild entrypoint features"
 authors = []
 # readme = "README.md"
 # license = { file = "LICENSE.txt" }
@@ -15,14 +14,13 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
 ]
-keywords = ["django", "translation"]
 requires-python = ">=3.10"
 dependencies = [
     "easybuild_framework"
 ]
 
 [project.urls]
-Source = "https://www.google.com"
+Source = "https://github.com/Crivella/test_eb_ep"
 
 [project.optional-dependencies]
 
