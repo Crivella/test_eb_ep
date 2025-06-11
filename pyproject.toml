@@ -25,9 +25,9 @@ Source = "https://github.com/Crivella/test_eb_ep"
 [project.optional-dependencies]
 
 [project.entry-points."easybuild.hooks"]
-"thisisanhook.1" = "test_eb_entrypoints:hello_world"
-"pre.configure.test_hook" = "test_eb_entrypoints:test_pre_configure"
-"thisisanhook.2" = "test_eb_entrypoints:test_post_configure"
+"thisisanhook.1" = "test_eb_entrypoints.hooks:hello_world"
+"pre.configure.test_hook" = "test_eb_entrypoints.hooks:test_pre_configure"
+"thisisanhook.2" = "test_eb_entrypoints.hooks:test_post_configure"
 
 [project.entry-points."easybuild.toolchain"]
 # "tc1" = "test_eb_entrypoints.unified:LLVM"
