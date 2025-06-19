@@ -9,7 +9,7 @@ from easybuild.toolchains.linalg.openblas import OpenBLAS
 from easybuild.toolchains.linalg.scalapack import ScaLAPACK
 from easybuild.toolchains.mpi.openmpi import OpenMPI
 from easybuild.tools import LooseVersion
-from easybuild.tools.entrypoints import register_toolchain_entrypoint
+from easybuild.tools.entrypoints import EntrypointToolchain
 from easybuild.tools.toolchain.compiler import DEFAULT_OPT_LEVEL, Compiler
 from easybuild.tools.toolchain.toolchain import SYSTEM_TOOLCHAIN_NAME
 
@@ -155,7 +155,7 @@ class LLVM(Compiler):
                     item.try_remove(unsupported_fortran_flags)
 
 
-@register_toolchain_entrypoint()
+@EntrypointToolchain()
 class LLVMtc(LLVM):
     """Compiler toolchain with Clang and Flang compilers."""
     NAME = 'LLVMtc'  # Using `...tc` to distinguish toolchain from package
@@ -163,7 +163,7 @@ class LLVMtc(LLVM):
     SUBTOOLCHAIN = [GCCcore.NAME, SYSTEM_TOOLCHAIN_NAME]
 
 
-@register_toolchain_entrypoint()
+@EntrypointToolchain()
 class Lfbf(LLVMtc, FlexiBLAS, Fftw):
     """Compiler toolchain with GCC, FlexiBLAS and FFTW."""
     NAME = 'lfbf'
@@ -171,7 +171,7 @@ class Lfbf(LLVMtc, FlexiBLAS, Fftw):
     OPTIONAL = True
 
 
-@register_toolchain_entrypoint()
+@EntrypointToolchain()
 class Lompi(LLVMtc, OpenMPI):
     """Compiler toolchain with GCC and OpenMPI."""
     NAME = 'lompi'
@@ -195,7 +195,7 @@ class Lompi(LLVMtc, OpenMPI):
         return deprecated
 
 
-@register_toolchain_entrypoint()
+@EntrypointToolchain()
 class Lolf(LLVMtc, OpenBLAS, Fftw):
     """Compiler toolchain with LLVM, OpenBLAS, and FFTW."""
     NAME = 'lolf'
@@ -203,7 +203,7 @@ class Lolf(LLVMtc, OpenBLAS, Fftw):
     OPTIONAL = True
 
 
-@register_toolchain_entrypoint()
+@EntrypointToolchain()
 class LFoss(Lompi, FlexiBLAS, ScaLAPACK, Fftw):
     """Compiler toolchain with GCC, OpenMPI, FlexiBLAS, ScaLAPACK and FFTW."""
     NAME = 'lfoss'
@@ -254,7 +254,7 @@ class LFoss(Lompi, FlexiBLAS, ScaLAPACK, Fftw):
 
         return deprecated
 
-# @register_toolchain_entrypoint()
+# @EntrypointToolchain()
 # def this_is_not_a_toolchain():
 #     """
 #     This is not a toolchain, but a function to ensure that this module is

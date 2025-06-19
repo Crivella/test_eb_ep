@@ -1,8 +1,8 @@
 from easybuild.framework.easyblock import EasyBlock
-from easybuild.tools.entrypoints import register_easyblock_entrypoint
+from easybuild.tools.entrypoints import EntrypointEasyblock
 
 
-@register_easyblock_entrypoint()
+@EntrypointEasyblock()
 class TestEasyBlock(EasyBlock):
     """A test easyblock that does nothing but print a message."""
 
