@@ -40,6 +40,10 @@ Source = "https://github.com/Crivella/test_eb_ep"
 [project.entry-points."easybuild.easyblock"]
 "eb1" = "test_eb_entrypoints.easyblock:TestEasyBlock"
 
+[project.entry-points."easybuild.rich_theme"]
+"theme1" = "test_eb_entrypoints.themes:theme1"
+"theme2" = "test_eb_entrypoints.themes:theme2"
+
 
 [tool.flit.module]
 name = "test_eb_entrypoints"
